@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 
-#include"InputAction.h"
+//#include"InputAction.h"
 
 #include "MyPawn.generated.h"
 
@@ -16,7 +16,7 @@ class UCameraComponent;
 class UArrowComponent;
 class UFloatingPawnMovement;
 class UPropellerComponent;
-
+struct FInputActionValue;
 
 
 UCLASS()
@@ -42,25 +42,25 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components")
 	UBoxComponent* Box;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* Body;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UPropellerComponent* Left;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UPropellerComponent* Right;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	USpringArmComponent* SpringArm;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UCameraComponent* Camera;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UArrowComponent* Arrow;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UFloatingPawnMovement* Movement;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
@@ -69,10 +69,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	class UInputAction* PitchRollAction;
 
-	//UPROPERTY(BlueprintImplementableEvent, Category = "Input")
-	/*UPROPERTY(BlueprintNativeEvent, Category = "Custom Spawn")
+	//UFUNCTION(BlueprintImplementableEvent, Category = "Custom Spawn")
+	UFUNCTION(BlueprintNativeEvent, Category = "Custom Spawn")
 	void PostSpawn();
-	void PostSpawn_Implementation();*/
+	void PostSpawn_Implementation();
 
 
 	void Fire(const FInputActionValue& Value);

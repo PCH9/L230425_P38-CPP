@@ -107,7 +107,7 @@ void AMyPawn::Fire(const FInputActionValue& Value)
 		GetWorld()->SpawnActor < ARocket > (Projectile, Arrow->GetComponentLocation(), Arrow->GetComponentRotation());
 	}
 
-	//PostSpawn();
+	PostSpawn();
 }
 
 void  AMyPawn::PitchRoll(const FInputActionValue& Value)
@@ -118,11 +118,8 @@ void  AMyPawn::PitchRoll(const FInputActionValue& Value)
 	AddActorLocalRotation(DesireRotation * 60.0f * UGameplayStatics::GetWorldDeltaSeconds(GetWorld()));
 }
 
-//void AMyPawn::PostSpawn()
-//{
-//}
-//
-//void AMyPawn::PostSpawn_Implementation()
-//{
-//}
+void AMyPawn::PostSpawn_Implementation(void)
+{
+	UE_LOG(LogTemp, Warning, TEXT("CPP"));
+}
 
