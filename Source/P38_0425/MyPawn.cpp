@@ -46,15 +46,19 @@ AMyPawn::AMyPawn()
 
 	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
 	Arrow->SetupAttachment(Box);
+	Arrow->AddLocalOffset(FVector(100, 0, 0));
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(Box);
+	SpringArm->TargetArmLength = 150.0f;
+	SpringArm->bEnableCameraLag = true;
+	SpringArm->bEnableCameraRotationLag = true;
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
 
 	Movement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
-	
+	Movement->MaxSpeed = 2000.0f;
 }
 
 // Called when the game starts or when spawned
@@ -69,6 +73,7 @@ void AMyPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	AddMovementInput(GetActorForwardVector());
 }
 
 // Called to bind functionality to input

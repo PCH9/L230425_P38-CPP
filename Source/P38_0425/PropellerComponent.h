@@ -13,5 +13,10 @@ UCLASS()
 class P38_0425_API UPropellerComponent : public UStaticMeshComponent
 {
 	GENERATED_BODY()
-	
+public:
+
+	UPropellerComponent();
+
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 };
