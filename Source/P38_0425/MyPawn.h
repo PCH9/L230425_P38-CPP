@@ -12,6 +12,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UArrowComponent;
 class UFloatingPawnMovement;
+class UPropellerComponent;
 
 
 UCLASS()
@@ -38,9 +39,9 @@ public:
 
 	UStaticMeshComponent* Body;
 
-	UStaticMeshComponent* Left;
+	UPropellerComponent* Left;
 
-	UStaticMeshComponent* Right;
+	UPropellerComponent* Right;
 
 	USpringArmComponent* SpringArm;
 
