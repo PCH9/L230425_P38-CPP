@@ -23,7 +23,7 @@ AMyPawn::AMyPawn()
 	Body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
 	Body->SetupAttachment(Box);
 
-	ConstructorHelpers::FObjectFinder<UStaticMesh> SM_P38_Body(TEXT("/Script/Engine.StaticMesh'/Game/P38/Meshes/SM_P38_Body.SM_P38_Body'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> SM_P38_Body(TEXT("/Script/Engine.StaticMesh'/Game/P38/Meshes/SM_P38_Body.SM_P38_Body'"));
 	if (SM_P38_Body.Succeeded())
 	{
 		Body->SetStaticMesh(SM_P38_Body.Object);
@@ -35,11 +35,13 @@ AMyPawn::AMyPawn()
 	Right = CreateDefaultSubobject<UPropellerComponent>(TEXT("Right"));
 	Right->SetupAttachment(Body);
 
-	ConstructorHelpers::FObjectFinder<UStaticMesh> SM_Propeller(TEXT("/Script/Engine.StaticMesh'/Game/P38/Meshes/SM_P38_Propeller.SM_P38_Propeller'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> SM_Propeller(TEXT("/Script/Engine.StaticMesh'/Game/P38/Meshes/SM_P38_Propeller.SM_P38_Propeller'"));
 	if (SM_Propeller.Succeeded())
 	{
 		Left->SetStaticMesh(SM_Propeller.Object);
+		Left->AddLocalOffset(FVector(37.5f, -21.0f, 1.17f));
 		Right->SetStaticMesh(SM_Propeller.Object);
+		Right->AddLocalOffset(FVector(37.5f, 21.0f, 1.17f));
 	}
 
 	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("Arrow"));
