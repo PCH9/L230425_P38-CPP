@@ -13,5 +13,10 @@ UCLASS()
 class P38_0425_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	class UInputMappingContext* InputContext;
+
+	virtual void BeginPlay() override;
 };
